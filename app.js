@@ -13,7 +13,26 @@ app.set('view engine', 'handlebars');
 app.get('/',(req,res)=>{
 
    res.render('home/index');
+});
+
+
+app.get('/about',(req,res)=>{
+
+   res.render('home/about');
 })
+
+app.get('/register',(req,res)=>{
+
+   res.render('home/register');
+})
+
+
+app.get('/login',(req,res)=>{
+
+   res.render('home/login');
+})
+
+
 app.listen(7070,()=>{
    console.log('listening to 7070');
 });
