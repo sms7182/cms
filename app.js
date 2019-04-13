@@ -10,27 +10,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.engine('handlebars', exphbs({defaultLayout: 'home'}));
 app.set('view engine', 'handlebars');
 
-app.get('/',(req,res)=>{
-
-   res.render('home/index');
-});
-
-
-app.get('/about',(req,res)=>{
-
-   res.render('home/about');
-})
-
-app.get('/register',(req,res)=>{
-
-   res.render('home/register');
-})
-
-
-app.get('/login',(req,res)=>{
-
-   res.render('home/login');
-})
+//load routes
+const  home=require('./routes/home/index');
+const  admin=require('./routes/admin/index');
+//use routes
+app.use('/',home);
+app.use('/admin',admin);
 
 
 app.listen(7070,()=>{
