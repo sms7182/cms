@@ -1,13 +1,19 @@
 const  express=require('express');
-
 const router=express.Router();
+const Post=require('../../models/Post');
 
 router.all('/*',(req,res,next)=>{
     req.app.locals.layout='admin';
     next();
 });
 router.get('/',(req,res)=>{
- res.send('it work');
+
+    Post.find({}).then(posts=>{
+        res.render('admin/posts',{posts:posts});
+    }).catch(err=>{
+        console.log('could not to loading ..');
+    });
+
 });
 
 router.get('/create',(req,res)=>{
@@ -15,6 +21,22 @@ router.get('/create',(req,res)=>{
 })
 
 router.post('/create',(req,res)=>{
-  res.send('worked');
+   let allowComments=false;
+   if(req.body.allowComments){
+       allowComments=true;
+   }
+    const  newPost=new Post({
+       title:req.body.title,
+       status:req.body.status,
+       allowComments:allowComments,
+       body:req.body.body
+   });
+   newPost.save().then(savedPost=>{
+       console.log(savedPost);
+       res.redirect('/admin/posts');
+   }).catch(error=>{
+       console.log('could not  save');
+   });
+
 })
 module.exports=router;
