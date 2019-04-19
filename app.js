@@ -1,7 +1,13 @@
 const  express=require('express');
 const  app=express();
 const  path=require('path');
+const mongoose=require('mongoose');
 const exphbs = require('express-handlebars');
+
+mongoose.connect('mongodb://localhost:27017/cms',{useMongoClient:true}).then((db)=>{
+   console.log('mongo connected ')
+}).catch(err=>console.log(err));
+
 
 app.use(express.static(path.join(__dirname, 'public')));
 
