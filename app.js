@@ -4,11 +4,12 @@ const  path=require('path');
 const mongoose=require('mongoose');
 const exphbs = require('express-handlebars');
 const bodyParser=require('body-parser');
+const methodOverride=require('method-override');
 
 mongoose.Promise=global.Promise;
 
 
-mongoose.connect('mongodb://localhost:27017/cms',{useMongoClient:true}).then((db)=>{
+mongoose.connect('mongodb://localhost:27017/cms').then((db)=>{
    console.log('mongo connected ')
 }).catch(err=>console.log(err));
 
@@ -23,6 +24,9 @@ app.set('view engine', 'handlebars');
 //body parser
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
+
+//override method
+app.use(methodOverride('_method'))
 
 //load routes
 const  home=require('./routes/home/index');

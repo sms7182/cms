@@ -18,7 +18,7 @@ router.get('/',(req,res)=>{
 
 router.get('/create',(req,res)=>{
     res.render('admin/posts/create');
-})
+});
 
 router.post('/create',(req,res)=>{
    let allowComments=false;
@@ -38,7 +38,7 @@ router.post('/create',(req,res)=>{
        console.log('could not  save');
    });
 
-})
+});
 router.get('/edit/:id',(req,res)=>{
 
     Post.findOne({_id:req.params.id}).then(pst=>{
@@ -47,4 +47,21 @@ router.get('/edit/:id',(req,res)=>{
 
 });
 
+router.put('/edit/:id',(req,res)=>{
+
+
+    Post.findOne({_id:req.params.id}).then(pst=>{
+       let  allowComments=false;
+        if(req.body.allowComments){
+            allowComments=true;
+        }
+        pst.title=req.body.title;
+        pst.body=req.body.body;
+        pst.status=req.body.status;
+        pst.allowComments=allowComments;
+        pst.save().then(updated=>{
+            res.redirect('/admin/posts');
+        });
+    });
+});
 module.exports=router;
