@@ -19,6 +19,9 @@ const  PostSchema=new Schema({
     },
     body:{
         type:String
+    },
+    filename:{
+        type:String
     }
 });
 module.exports=mongoose.model('posts',PostSchema);

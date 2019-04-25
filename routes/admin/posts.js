@@ -1,6 +1,7 @@
 const  express=require('express');
 const router=express.Router();
 const Post=require('../../models/Post');
+const {isEmpty}=require('../../helpers/upload-helpers');
 
 router.all('/*',(req,res,next)=>{
     req.app.locals.layout='admin';
@@ -21,6 +22,19 @@ router.get('/create',(req,res)=>{
 });
 
 router.post('/create',(req,res)=>{
+    let filename='';
+        if(!isEmpty(req.files)) {
+            console.log('file is not empty');
+            let file = req.files.file;
+             filename = Date.now()+'-'+file.name;
+             file.mv('./public/uploads/' + filename, (err) => {
+                if (err) throw err;
+                    });
+                }
+
+        else {
+            console.log('file is empty');
+        }
    let allowComments=false;
    if(req.body.allowComments){
        allowComments=true;
@@ -29,7 +43,8 @@ router.post('/create',(req,res)=>{
        title:req.body.title,
        status:req.body.status,
        allowComments:allowComments,
-       body:req.body.body
+       body:req.body.body,
+        filename:filename
    });
    newPost.save().then(savedPost=>{
        console.log(savedPost);
