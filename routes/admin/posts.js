@@ -22,6 +22,21 @@ router.get('/create',(req,res)=>{
 });
 
 router.post('/create',(req,res)=>{
+
+    let errors=[];
+    if(!req.body.title){
+        errors.push({message:'please add a title'});
+    }
+    if(errors.length>0){
+        res.render('admin/posts/create',{
+            errors:errors
+        });
+    }
+    else{
+
+
+
+
     let filename='';
         if(!isEmpty(req.files)) {
             console.log('file is not empty');
@@ -50,10 +65,10 @@ router.post('/create',(req,res)=>{
        console.log(savedPost);
        res.redirect('/admin/posts');
    }).catch(error=>{
-       console.log('could not  save');
+       console.log('could not  save'+error);
    });
 
-});
+}});
 router.get('/edit/:id',(req,res)=>{
 
     Post.findOne({_id:req.params.id}).then(pst=>{
