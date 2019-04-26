@@ -6,6 +6,8 @@ const exphbs = require('express-handlebars');
 const bodyParser=require('body-parser');
 const methodOverride=require('method-override');
 const Upload=require('express-fileupload');
+const session=require('express-session');
+const flash=require('connect-flash');
 
 mongoose.Promise=global.Promise;
 
@@ -31,6 +33,19 @@ app.use(bodyParser.json());
 
 //override method
 app.use(methodOverride('_method'))
+
+app.use(session({
+   secret:'fatalerror',
+   resave:true,
+   saveUninitialized:true
+}));
+
+app.use(flash());
+
+app.use((req,res,next)=>{
+   res.locals.success_message=req.flash('success_message');
+   next();
+});
 
 //load routes
 const  home=require('./routes/home/index');
