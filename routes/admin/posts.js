@@ -98,6 +98,8 @@ router.put('/edit/:id',(req,res)=>{
 router.delete('/:id',(req,res)=>{
 
    Post.remove({_id:req.params.id}).then(result=>{
+        console.log(req.params);
+       req.flash('success_message',`Post was created successfully`);
        res.redirect('/admin/posts');
    })
 
