@@ -107,6 +107,7 @@ router.put('/edit/:id',(req,res)=>{
         }
 
         pst.save().then(updated=>{
+            req.flash('sucess_message','Post was successfully updated');
             res.redirect('/admin/posts');
         });
     });
