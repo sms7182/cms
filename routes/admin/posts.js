@@ -81,6 +81,8 @@ router.put('/edit/:id',(req,res)=>{
 
 
     Post.findOne({_id:req.params.id}).then(pst=>{
+
+
        let  allowComments=false;
         if(req.body.allowComments){
             allowComments=true;
@@ -89,6 +91,21 @@ router.put('/edit/:id',(req,res)=>{
         pst.body=req.body.body;
         pst.status=req.body.status;
         pst.allowComments=allowComments;
+        let filename='';
+        if(!isEmpty(req.files)) {
+            console.log('file is not empty');
+            let file = req.files.file;
+            filename = Date.now()+'-'+file.name;
+            pst.filename=filename;
+            file.mv('./public/uploads/' + filename, (err) => {
+                if (err) throw err;
+            });
+        }
+
+        else {
+            console.log('file is empty');
+        }
+
         pst.save().then(updated=>{
             res.redirect('/admin/posts');
         });
