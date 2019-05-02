@@ -19,9 +19,9 @@ mongoose.connect('mongodb://localhost:27017/cms').then((db)=>{
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-const {select}=require('./helpers/handlebars-helpers');
+const {select,generateDate}=require('./helpers/handlebars-helpers');
 
-app.engine('handlebars', exphbs({defaultLayout: 'home',helpers:{select:select}}));
+app.engine('handlebars', exphbs({defaultLayout: 'home',helpers:{select:select,generateDate:generateDate}}));
 app.set('view engine', 'handlebars');
 
 //mildeware upload

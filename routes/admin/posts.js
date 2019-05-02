@@ -3,6 +3,7 @@ const router=express.Router();
 const Post=require('../../models/Post');
 const {isEmpty}=require('../../helpers/upload-helpers');
 
+
 router.all('/*',(req,res,next)=>{
     req.app.locals.layout='admin';
     next();

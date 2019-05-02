@@ -22,6 +22,11 @@ const  PostSchema=new Schema({
     },
     filename:{
         type:String
+    },
+    date:{
+        type:Date,
+        default: Date.now()
     }
+
 });
 module.exports=mongoose.model('posts',PostSchema);
