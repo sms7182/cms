@@ -34,9 +34,34 @@ router.post('/create',(req,res)=>{
 
 router.get('/edit/:id',(req,res)=>{
     Category.findOne({_id:req.params.id}).then(category=>{
+
         res.render('admin/categories/edit',{category:category});
     });
 
 });
+
+router.put('/edit/:id',(req,res)=>{
+
+    Category.findOne({_id:req.params.id}).then(category=>{
+        category.name=req.body.name;
+        category.save().then(sv=>{
+            res.redirect('/admin/categories');
+        });
+
+    });
+
+});
+
+router.delete('/:id',(req,res)=>{
+
+    Category.remove({_id:req.params.id}).then(result=>{
+
+        req.flash('success_message',`Delete was  successfully`);
+        res.redirect('/admin/categories');
+    })
+
+});
+
+
 
 module.exports=router;
