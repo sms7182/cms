@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2f6f5014-102a-441b-9412-4d23741aa8a8" name="Default Changelist" comment="savecategory in db">
+    <list default="true" id="2f6f5014-102a-441b-9412-4d23741aa8a8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/views/partials/home/sidebar.handlebars" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/admin/categories.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/admin/categories.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/admin/categories/edit.handlebars" beforeDir="false" afterPath="$PROJECT_DIR$/views/admin/categories/edit.handlebars" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/admin/categories/index.handlebars" beforeDir="false" afterPath="$PROJECT_DIR$/views/admin/categories/index.handlebars" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/home/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/home/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/home/index.handlebars" beforeDir="false" afterPath="$PROJECT_DIR$/views/home/index.handlebars" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/home/post.handlebars" beforeDir="false" afterPath="$PROJECT_DIR$/views/home/post.handlebars" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -19,19 +20,37 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app.js">
+        <entry file="file://$PROJECT_DIR$/views/admin/categories/index.handlebars">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="560">
-              <caret line="28" selection-start-line="28" selection-end-line="28" />
+            <state relative-caret-position="249">
+              <caret line="30" column="69" selection-start-line="30" selection-start-column="69" selection-end-line="30" selection-end-column="69" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/views/admin/categories/index.handlebars">
+        <entry file="file://$PROJECT_DIR$/routes/home/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="249">
-              <caret line="30" column="69" selection-start-line="30" selection-start-column="69" selection-end-line="30" selection-end-column="69" />
+            <state relative-caret-position="280">
+              <caret line="40" column="7" lean-forward="true" selection-start-line="40" selection-start-column="7" selection-end-line="40" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/home/post.handlebars">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="275">
+              <caret line="82" column="21" selection-start-line="82" selection-start-column="21" selection-end-line="82" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/partials/home/sidebar.handlebars">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="140">
+              <caret line="24" column="38" lean-forward="true" selection-start-line="24" selection-start-column="38" selection-end-line="24" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -75,8 +94,8 @@
       <list>
         <option value="HTML File" />
         <option value="JavaScript File" />
-        <option value="handlebars" />
         <option value="CSS File" />
+        <option value="handlebars" />
       </list>
     </option>
     <option name="SCHEME" value="Project" />
@@ -120,16 +139,17 @@
         <option value="$PROJECT_DIR$/helpers/handlebars-helpers.js" />
         <option value="$PROJECT_DIR$/views/admin/posts/index.handlebars" />
         <option value="$PROJECT_DIR$/app.js" />
-        <option value="$PROJECT_DIR$/views/home/index.handlebars" />
-        <option value="$PROJECT_DIR$/routes/home/index.js" />
         <option value="$PROJECT_DIR$/routes/home/post.handlebars" />
         <option value="$PROJECT_DIR$/public/css/ذمخل-حخسف.css" />
         <option value="$PROJECT_DIR$/public/css/blog-post.css" />
         <option value="$PROJECT_DIR$/views/layouts/home.handlebars" />
-        <option value="$PROJECT_DIR$/views/home/post.handlebars" />
         <option value="$PROJECT_DIR$/views/admin/categories/edit.handlebars" />
         <option value="$PROJECT_DIR$/routes/admin/categories.js" />
         <option value="$PROJECT_DIR$/views/admin/categories/index.handlebars" />
+        <option value="$PROJECT_DIR$/views/home/index.handlebars" />
+        <option value="$PROJECT_DIR$/views/home/post.handlebars" />
+        <option value="$PROJECT_DIR$/views/partials/home/sidebar.handlebars" />
+        <option value="$PROJECT_DIR$/routes/home/index.js" />
       </list>
     </option>
   </component>
@@ -162,20 +182,13 @@
             <path>
               <item name="cms" type="b2602c69:ProjectViewProjectNode" />
               <item name="cms" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="routes" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="cms" type="b2602c69:ProjectViewProjectNode" />
               <item name="cms" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cms" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cms" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="categories" type="462c0819:PsiDirectoryNode" />
+              <item name="routes" type="462c0819:PsiDirectoryNode" />
+              <item name="home" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -260,7 +273,7 @@
       <workItem from="1556901261356" duration="1644000" />
       <workItem from="1556903203203" duration="2502000" />
       <workItem from="1556908871276" duration="86000" />
-      <workItem from="1556987205678" duration="2780000" />
+      <workItem from="1556987205678" duration="5313000" />
     </task>
     <task id="LOCAL-00001" summary="first commit for cms">
       <created>1555059777309</created>
@@ -437,11 +450,18 @@
       <option name="project" value="LOCAL" />
       <updated>1556905013943</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="add delete and update">
+      <created>1556990238041</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1556990238041</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="93558000" />
+    <option name="totallyTimeSpent" value="96091000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -522,7 +542,8 @@
     <MESSAGE value="developing" />
     <MESSAGE value="add category" />
     <MESSAGE value="savecategory in db" />
-    <option name="LAST_COMMIT_MESSAGE" value="savecategory in db" />
+    <MESSAGE value="add delete and update" />
+    <option name="LAST_COMMIT_MESSAGE" value="add delete and update" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/ide/ide-scripting.js" />
@@ -597,13 +618,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="158">
           <caret line="62" column="48" selection-start-line="62" selection-start-column="48" selection-end-line="62" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/partials/home/home-nav.handlebars">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="18" column="59" selection-start-line="18" selection-start-column="59" selection-end-line="18" selection-end-column="59" />
         </state>
       </provider>
     </entry>
@@ -717,31 +731,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/home/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="409">
-          <caret line="32" column="41" selection-start-line="32" selection-start-column="41" selection-end-line="32" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/Post.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="27" column="27" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/home/post.handlebars">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-760">
-          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/home/index.handlebars">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="15" column="34" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -801,6 +794,41 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="249">
           <caret line="30" column="69" selection-start-line="30" selection-start-column="69" selection-end-line="30" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/partials/home/home-nav.handlebars">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="18" column="59" selection-start-line="18" selection-start-column="59" selection-end-line="18" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/home/index.handlebars">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="39" column="21" selection-start-line="39" selection-start-column="21" selection-end-line="39" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/home/post.handlebars">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="82" column="21" selection-start-line="82" selection-start-column="21" selection-end-line="82" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/partials/home/sidebar.handlebars">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="24" column="38" lean-forward="true" selection-start-line="24" selection-start-column="38" selection-end-line="24" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/home/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="40" column="7" lean-forward="true" selection-start-line="40" selection-start-column="7" selection-end-line="40" selection-end-column="7" />
         </state>
       </provider>
     </entry>
