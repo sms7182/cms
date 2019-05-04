@@ -2,6 +2,7 @@ const  express=require('express');
 const router=express.Router();
 const Post=require('../../models/Post');
 const {isEmpty}=require('../../helpers/upload-helpers');
+const Category=require('../../models/Category');
 
 
 router.all('/*',(req,res,next)=>{
@@ -10,7 +11,8 @@ router.all('/*',(req,res,next)=>{
 });
 router.get('/',(req,res)=>{
 
-    Post.find({}).then(posts=>{
+    Post.find({}).populate('category')
+        .then(posts=>{
         res.render('admin/posts',{posts:posts});
     }).catch(err=>{
         console.log('could not to loading ..');
@@ -19,7 +21,10 @@ router.get('/',(req,res)=>{
 });
 
 router.get('/create',(req,res)=>{
-    res.render('admin/posts/create');
+    Category.find({}).then(categories=>{
+        res.render('admin/posts/create',{categories:categories});
+    });
+
 });
 
 router.post('/create',(req,res)=>{
@@ -60,7 +65,8 @@ router.post('/create',(req,res)=>{
        status:req.body.status,
        allowComments:allowComments,
        body:req.body.body,
-        filename:filename
+        filename:filename,
+        category:req.body.category
    });
    newPost.save().then(savedPost=>{
        req.flash('success_message',`Post ${savedPost.title} was created successfully`);
@@ -73,7 +79,11 @@ router.post('/create',(req,res)=>{
 router.get('/edit/:id',(req,res)=>{
 
     Post.findOne({_id:req.params.id}).then(pst=>{
-        res.render('admin/posts/edit',{post:pst});
+        Category.find({}).then(categories=>{
+            res.render('admin/posts/edit',{post:pst,categories:categories});
+        });
+
+
     })
 
 });
@@ -92,6 +102,7 @@ router.put('/edit/:id',(req,res)=>{
         pst.body=req.body.body;
         pst.status=req.body.status;
         pst.allowComments=allowComments;
+        pst.category=req.body.category;
         let filename='';
         if(!isEmpty(req.files)) {
             console.log('file is not empty');
