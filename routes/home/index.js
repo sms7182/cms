@@ -3,7 +3,8 @@ const  express=require('express');
 const router=express.Router();
 const  Post=require('../../models/Post');
 const  Category=require('../../models/Category');
-
+const  User=require('../../models/User');
+const  bcrypt=require('bcryptjs');
 
 router.all('/*',(req,res,next)=>{
     req.app.locals.layout='home';
@@ -46,6 +47,29 @@ router.get('/post/:id',(req,res)=>{
 router.get('/login',(req,res)=>{
 
     res.render('home/login');
+});
+
+router.post('/register',(req,res)=>{
+
+    const newUser=new User({
+        firstName:req.body.firstName,
+        lastName:req.body.lastName,
+        password:req.body.password,
+        email:req.body.email
+
+
+});
+    bcrypt.genSalt(10,(err,salt)=>{
+        bcrypt.hash(newUser.password,salt,(err,hash)=>{
+            console.log(hash);
+            newUser.password=hash;
+        });
+    });
+
+    newUser.save().then(saveUser=>{
+        res.send('user was saved');
+      })
+
 });
 
 module.exports=router;
