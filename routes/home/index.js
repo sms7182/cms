@@ -51,24 +51,43 @@ router.get('/login',(req,res)=>{
 
 router.post('/register',(req,res)=>{
 
-    const newUser=new User({
-        firstName:req.body.firstName,
-        lastName:req.body.lastName,
-        password:req.body.password,
-        email:req.body.email
+    let errors=[];
 
 
-});
-    bcrypt.genSalt(10,(err,salt)=>{
-        bcrypt.hash(newUser.password,salt,(err,hash)=>{
-            console.log(hash);
-            newUser.password=hash;
-            newUser.save().then(saveUser=>{
-                res.redirect('/admin/');
-            })
 
+
+        User.findOne({email: req.body.email}).then(usr=>{
+            if(!usr){
+
+                const newUser=new User({
+                    firstName:req.body.firstName,
+                    lastName:req.body.lastName,
+                    password:req.body.password,
+                    email:req.body.email
+
+
+                });
+                bcrypt.genSalt(10,(err,salt)=>{
+                    bcrypt.hash(newUser.password,salt,(err,hash)=>{
+                        console.log(hash);
+                        newUser.password=hash;
+                        newUser.save().then(saveUser=>{
+                            req.flash('success_message','You are now  registered,please login ');
+                            res.redirect('/login/');
+                        })
+
+                    });
+                });
+
+            }
+            else{
+                req.flash('error_message','That  email exist please login');
+                res.redirect('/login');
+            }
         });
-    });
+
+
+
 
 
 });
