@@ -19,4 +19,9 @@ const UserSchema=new Schema({
         required:true
     }
 });
+
+UserSchema.methods.validPassword=function(){
+
+};
+
 module.exports=mongoose.model('users',UserSchema);

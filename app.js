@@ -8,11 +8,14 @@ const methodOverride=require('method-override');
 const Upload=require('express-fileupload');
 const session=require('express-session');
 const flash=require('connect-flash');
+const {mongoDbUrl}=require('./config/database');
+const passport=require('passport');
+
 
 mongoose.Promise=global.Promise;
 
 
-mongoose.connect('mongodb://localhost:27017/cms').then((db)=>{
+mongoose.connect(mongoDbUrl).then((db)=>{
    console.log('mongo connected ')
 }).catch(err=>console.log(err));
 
@@ -41,6 +44,8 @@ app.use(session({
 }));
 
 app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use((req,res,next)=>{
    res.locals.success_message=req.flash('success_message');
