@@ -63,12 +63,13 @@ router.post('/register',(req,res)=>{
         bcrypt.hash(newUser.password,salt,(err,hash)=>{
             console.log(hash);
             newUser.password=hash;
+            newUser.save().then(saveUser=>{
+                res.redirect('/admin/');
+            })
+
         });
     });
 
-    newUser.save().then(saveUser=>{
-        res.send('user was saved');
-      })
 
 });
 
