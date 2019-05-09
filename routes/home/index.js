@@ -52,10 +52,26 @@ router.get('/login',(req,res)=>{
 router.post('/register',(req,res)=>{
 
     let errors=[];
+    if(!req.body.firstName){
+        errors.push({message: 'please add a firstName'});
+    }
+    if(!req.body.lastName){
+        errors.push({message: 'please add a lastName'});
+    }
+    if(!req.body.email){
+        errors.push({message: 'please add an email'});
+    }
+    if(req.body.password!==req.body.passwordConfirm){
+        errors.push({message:'Password fields dont match'});
+    }
+    if(errors.length>0){
+        res.render('home/register',{
+            errors:errors
+        })
+    }
 
 
-
-
+else{
         User.findOne({email: req.body.email}).then(usr=>{
             if(!usr){
 
@@ -85,6 +101,7 @@ router.post('/register',(req,res)=>{
                 res.redirect('/login');
             }
         });
+}
 
 
 
