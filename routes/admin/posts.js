@@ -63,10 +63,11 @@ router.post('/create',(req,res)=>{
    }
     const  newPost=new Post({
        title:req.body.title,
+        user:req.user.id,
        status:req.body.status,
        allowComments:allowComments,
        body:req.body.body,
-        filename:filename,
+         filename:filename,
         category:req.body.category
    });
    newPost.save().then(savedPost=>{
@@ -104,6 +105,7 @@ router.put('/edit/:id',(req,res)=>{
         pst.status=req.body.status;
         pst.allowComments=allowComments;
         pst.category=req.body.category;
+        pst.user=req.user.id;
         let filename='';
         if(!isEmpty(req.files)) {
             console.log('file is not empty');

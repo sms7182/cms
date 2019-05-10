@@ -9,7 +9,8 @@ const  PostSchema=new Schema({
         ref:'categories'
     },
     user:{
-
+        type:Schema.Types.ObjectId,
+        ref:'users'
     },
     title:{
         type:String,

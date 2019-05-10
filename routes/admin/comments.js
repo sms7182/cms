@@ -10,7 +10,7 @@ router.all('/*',(req,res,next)=>{
 });
 
 router.get('/',(req,res)=>{
-    Comment.find({user:req.user.id}).then(cmns=>{
+    Comment.find({user:req.body.id}).then(cmns=>{
         res.render('admin/comments',{comments:cmns});
 
     })
