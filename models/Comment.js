@@ -9,6 +9,10 @@ const CommentSchema=new Schema({
     body:{
         type:String,
         required:true
+    },
+    date:{
+        type:Date,
+        default:Date.now()
     }
 });
 module.exports=mongoose.model('comments',CommentSchema);
