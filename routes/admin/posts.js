@@ -3,9 +3,9 @@ const router=express.Router();
 const Post=require('../../models/Post');
 const {isEmpty}=require('../../helpers/upload-helpers');
 const Category=require('../../models/Category');
+const {userAuthenticated}=require('../../helpers/authentication');
 
-
-router.all('/*',(req,res,next)=>{
+router.all('/*',userAuthenticated,(req,res,next)=>{
     req.app.locals.layout='admin';
     next();
 });

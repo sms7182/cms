@@ -95,6 +95,13 @@ router.post('/login',(req,res,next)=>{
 
 });
 
+router.get('/logout',(req,res)=>{
+
+    req.logOut();
+    res.redirect('/login');
+});
+
+
 
 router.post('/register',(req,res)=>{
 
