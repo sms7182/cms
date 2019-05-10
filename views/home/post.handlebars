@@ -1,7 +1,7 @@
 <div class="row">
 
     <!-- Post Content Column -->
-    <div class="col-lg-8">
+    <hr class="col-lg-8">
 
         <!-- Title -->
         <h1 class="mt-4">{{post.title}}</h1>
@@ -27,6 +27,7 @@
         <!-- Post Content -->
         <p class="lead">{{post.body}}</p>
 
+        </hr>
 
 
         <!-- Comments Form -->
@@ -36,7 +37,7 @@
                 <form action="/admin/comments" method="post">
                     <div class="form-group">
                         <textarea name="body" class="form-control" rows="3"></textarea>
-                        <input type="hidden" name="id" value="{{post.id}}">
+                        <input type="hidden" value="{{post.id}}" name="id" >
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>

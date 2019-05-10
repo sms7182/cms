@@ -10,7 +10,7 @@ router.all('/*',(req,res,next)=>{
 });
 
 router.get('/',(req,res)=>{
-    Comment.find({}).then(cmns=>{
+    Comment.find({user:req.user.id}).then(cmns=>{
         res.render('admin/comments',{comments:cmns});
 
     })
@@ -18,6 +18,8 @@ router.get('/',(req,res)=>{
 
 router.post('/',(req,res)=>{
 
+    console.log('post logged');
+    console.log(req.body);
     Post.findOne({_id:req.body.id}).then(pst=>{
 
          const newComment=new Comment({
@@ -37,7 +39,11 @@ router.post('/',(req,res)=>{
 
 router.delete('/:id',(req,res)=>{
     Comment.remove({_id:req.params.id}).then(deleteItem=>{
-       res.redirect('/admi/commenst');
+        Post.findOneAndUpdate({comments:req.params.id},{$pull:{comments:req.params.id}},(err,data)=>{
+            if(err) console.log(err);
+            res.redirect('/admin/comments');
+
+        });
     });
 })
 
