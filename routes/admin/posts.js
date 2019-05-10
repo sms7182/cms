@@ -4,6 +4,7 @@ const Post=require('../../models/Post');
 const {isEmpty}=require('../../helpers/upload-helpers');
 const Category=require('../../models/Category');
 const {userAuthenticated}=require('../../helpers/authentication');
+var fs = require('fs');
 
 router.all('/*',(req,res,next)=>{
     req.app.locals.layout='admin';
@@ -125,14 +126,15 @@ router.put('/edit/:id',(req,res)=>{
     });
 });
 
-router.delete('/:id',(req,res)=>{
+router.delete('/:id',(req,res)=> {
+    Post.findOne({_id: req.params.id}).populate('comments').then(post => {
 
-   Post.remove({_id:req.params.id}).then(result=>{
-        console.log(req.params);
-       req.flash('success_message',`Post was created successfully`);
-       res.redirect('/admin/posts');
-   })
-
+            post.remove();
+            req.flash('success_message', 'Post was successfullt deleted');
+            res.redirect('/admin/posts');
+        });
+    ;
 });
+
 
 module.exports=router;
