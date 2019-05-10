@@ -37,7 +37,7 @@ router.get('/register',(req,res)=>{
 
 router.get('/post/:id',(req,res)=>{
 
-    Post.findOne({_id:req.params.id}).then(post=>{
+    Post.findOne({_id:req.params.id}).then(pst=>{
         Category.find({}).then(categories=>{
             res.render('home/index',{posts:pst,categories:categories});
         });
@@ -94,6 +94,7 @@ router.post('/login',(req,res,next)=>{
     })(req,res, next);
 
 });
+
 
 router.get('/logout',(req,res)=>{
 

@@ -5,7 +5,7 @@ const {isEmpty}=require('../../helpers/upload-helpers');
 const Category=require('../../models/Category');
 const {userAuthenticated}=require('../../helpers/authentication');
 
-router.all('/*',userAuthenticated,(req,res,next)=>{
+router.all('/*',(req,res,next)=>{
     req.app.locals.layout='admin';
     next();
 });
